@@ -1,0 +1,83 @@
+<style>
+  body {
+    background-color: black;
+    font-family: sans-serif;
+    display: grid;
+    height: 100%;
+    height: stretch;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav {
+    border: 1px solid #585a5e;
+    width: 60dvw;
+    margin: 0 auto;
+    border-radius: 2rem;
+  }
+
+  .menu {
+    color: gray;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: end;
+    padding: 0 1rem;
+  }
+
+  .item {
+    position: relative;
+  }
+
+  .item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100px;
+    height: 30px;
+    margin: 0 auto;
+    background-color: white;
+    pointer-events: none;
+    clip-path: path("M0,30 S-20,30,0,30 S30,30,50,30 S80,30,100,30 Z");
+    --easing-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    transition: clip-path 300ms var(--easing-in-out-back);
+  }
+
+  .item:has(:target)::before {
+    clip-path: path("M0,30 S-20,30,0,30 S30,15,50,15 S80,30,100,30 Z");
+  }
+
+  .link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    padding: 2rem 1.5rem;
+  }
+
+  .link:hover,
+  .link:focus-visible,
+  .link:target {
+    color: #2b75ed;
+  }
+
+  .content {
+    background-color: white;
+    border-radius: 2rem;
+    height: 300px;
+  }
+</style>
+
+<nav class="nav">
+  <ul class="menu">
+    <li class="item">
+      <a class="link" id="item-1" href="#item-1">Menu Item</a>
+    </li>
+    <li class="item">
+      <a class="link" id="item-2" href="#item-2">Menu Item</a>
+    </li>
+  </ul>
+  <div class="content"></div>
+</nav>
